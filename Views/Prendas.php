@@ -4,44 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy pos</title>
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <title>Easypos</title>
 </head>
 <body>
 
 <div id="root">
+    <?php include_once 'Components/Header.php'; ?>
+    <?php include_once 'Components/List.php'; ?>
+    <?php include_once 'Components/ListDesplegable.php'; ?>
 
-<h1>Welcome to EasyPos</div>
-    <ul class="productos">
-        <li><a href="index.php">Inicio</a></li>
-        <li><a href="Camisas/index.php">Camisas</a></li>
-        <li><a href="Pantalons/index.php">Pantalones</a></li>
-        <li><a href="Gorros/index.php">Gorros</a></li>
-    </ul>
-
-    <div class="search">
-        <form method="get" action="index.php">
-            <input type="text" name="q" placeholder="Buscar prenda" title="Buscar prenda">
-            <button type="submit" title="Buscar prenda">Buscar</button>
-        </form>
-    </div>
-      <?php 
-
-        if (isset($prendas)){
-
-            echo "<ul class='Prendas'>";
-                for($p = 0; $p < sizeof($prendas); $p++){
-                echo "<li><a href='Prenda.php?Prenda=".$prendas[$p]["Prendas"]."'>".$prendas[$p]["Prendas"]."</a></li>";
-            }
-                echo "</ul>";
-        
-            }else if($query){
-
-                print_r($query);
-            }
-
-        ?>
-
+    <?php include_once 'Components/ListMovil.php'; ?>
 </div>
 
+
+<script type="text/javascript" src="src/js/DetectorRoute.js"></script>
+<script type="text/javascript" src="src/js/Menu.js"></script>
+
+</script>
 </body>
-</html>
+</html>       

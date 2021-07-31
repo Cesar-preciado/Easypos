@@ -18,15 +18,15 @@ class Prenda{
 
         $Prendas = array();
 
-        $q = "select Camisa as Prendas, Color, Descripcion, Precio from Camisas 
+        $q = "select Camisa as Prendas, Color, Descripcion, Precio, Img from Camisas 
 
         union all
         
-        select Pantalon, Color, Descripcion, Precio from Pantalons
+        select Pantalon, Color, Descripcion, Precio, Img from Pantalons
         
         union all
         
-        select Gorro, Color, Descripcion, Precio from Gorros
+        select Gorro, Color, Descripcion, Precio, Img from Gorros
               ";
 
             if($result = $this->conexion->query($q)){
@@ -42,16 +42,16 @@ class Prenda{
 
         $Prenda = array();
 
-        $q = "select Camisa as Producto, Color, Descripcion, Precio from Camisas 
+        $q = "select Camisa as Producto, Color, Descripcion, Precio, Img from Camisas 
         where Camisa = '$prenda'
         union all
         
-        select Pantalon, Color, Descripcion, Precio from Pantalons 
+        select Pantalon, Color, Descripcion, Precio, Img from Pantalons 
         where Pantalon = '$prenda'
         
         union all
         
-        select Gorro, Color, Descripcion, Precio from Gorros
+        select Gorro, Color, Descripcion, Precio, Img from Gorros
         where Gorro = '$prenda'
         ";
 
@@ -68,16 +68,16 @@ class Prenda{
     $response = array();
         #Busquedad de prenda
         $query = "
-        select Camisa as Prendas, Color, Descripcion, Precio from Camisas 
-        where Camisa like '%$q%'
+        select Camisa as Prendas, Color, Descripcion, Precio, Img from Camisas 
+        where Camisa or Descripcion like '%$q%' 
         union all
-        select Pantalon, Color, Descripcion, Precio from Pantalons 
-        where Pantalon like '%$q%'
+        select Pantalon, Color, Descripcion, Precio, Img from Pantalons 
+        where Pantalon  or Descripcion  like '%$q%'
         
         union all
         
-        select Gorro, Color, Descripcion, Precio from Gorros
-        where Gorro like '%$q%'
+        select Gorro, Color, Descripcion, Precio, Img from Gorros
+        where Gorro  or Descripcion  like '%$q%'
         ";
 
         if($result = $this->conexion->query($query)){
